@@ -107,9 +107,9 @@ The configuration details of each machine may be found below.
 __All public IP references have been redacted to ensure privacy of the developers__
 <br />
 
-The machines on the internal network are not exposed to the public Internet. 
+The machines on the internal network are not exposed to the public Internet. Both the DeerFender-VM-NSG and RED Network Security Groups are configured in Azure to deny external access to the internal machines. The devices with external access is outlined below. 
 
-The Jump Box can accept SSH connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+The Jump Box can accept SSH connections from the Internet (Port 22). Access to this machine is only allowed from the following IP addresses:
 - Use your public IP from [here](https://www.whatismyip.com/)
 
 The Load balancer can accept HTTP (tcp:80) connections from the Internet. Access to this machine is only allowed from the following IP addresses:
@@ -126,7 +126,7 @@ A summary of the access policies in place can be found in the table below.
 | Web Server 1 | No                     | 40.127.75.124 - via Load Balancer |
 | Web Server 2 | No                     | 40.127.75.124 - via Load Balancer |
 | Web Server 3 | No                     | 40.127.75.124 - via Load Balancer |
-| Deerfender   | Yes (HTTP ONLY - 5601) | XXX.XXX.XXX.XXX                   |
+| Deerfender   | Yes (HTTP ONLY - 5601) | 20.37.244.250                     |
 
 <br />
 
