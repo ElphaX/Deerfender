@@ -1,6 +1,6 @@
 
   # DEERFENDERS - Project ELK
-
+---
 
 <img align="left" width="300" src="Images/Moose.gif">
 <br/><br/><br/>
@@ -10,7 +10,7 @@
 <br/>The files in this repository were used to configure the network depicted below.
 
 <br/><br/>
-
+---
 ![Download Diagram](Images/diagram.png)
 
 <br/><br/>
@@ -20,6 +20,7 @@
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, additional components such as metricbeat and filebeat could be added to this playbook. For this project we used specific isolated playbooks for these modules. See the YAML project repository folder for all playbook files, the 3 main ones have been depicted below.
 
 ### ELK
+---
   ```
 - name: Configure Elk VM with Docker
   hosts: elk
@@ -80,6 +81,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
 <br/>
 
 ### FileBeat
+---
 ```
 - name: Install and start filebeat
   hosts: webservers
@@ -111,6 +113,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
 <br/>
 
 ### MetricBeat
+---
 ```
 - name: Install and start metricbeat
   hosts: webservers
@@ -155,13 +158,13 @@ This document contains the following details:
 <br /><br />
 
 ### Contributers 
-
+---
 While the Azure Virtual lab environemnt, IP addresses, files, and screenshots referred to in this document are partially specific, all members of the Deefender project team contributed to this readme file and as such some values may differ. Please raise an issue if you find any inconsistencies.
 
 <br/><br/>
 
 ### Description of the Topology
-
+---
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
 Load balancing ensures that the application will be highly available, in addition to restricting direct access to the network.
