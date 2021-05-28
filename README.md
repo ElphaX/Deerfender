@@ -78,6 +78,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
         enabled: yes
   ```
 <br/>
+
 ### FileBeat
 ```
 - name: Install and start filebeat
@@ -108,6 +109,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
       enabled: yes
   ```
 <br/>
+
 ### MetricBeat
 ```
 - name: Install and start metricbeat
