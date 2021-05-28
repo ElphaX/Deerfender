@@ -16,7 +16,7 @@
 <br/><br/>
 
 ## Playbook Files
-
+---
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, additional components such as metricbeat and filebeat could be added to this playbook. For this project we used specific isolated playbooks for these modules. See the YAML project repository folder for all playbook files, the 3 main ones have been depicted below.
 
 ### ELK
@@ -175,15 +175,17 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 - Filebeat monitors log files or specified locations. Once the data is collected it is then forwarded to Elasticsearch for visualisation via Kibana thereafter.
 - Metricbeat collects statistics and metric data from the respective operating systems periodically before it's sent to Elasticsearch to be viewed via Kibana.
 
+### Azure Environment Details
+---
 The configuration details of each machine may be found below.
 
-| Name         | Function   | IP Address | Operating System     |
-|--------------|------------|------------|----------------------|
-| Jump Box     | Gateway    | 10.0.0.4   | Linux (Ubuntu 18.04) |
-| Web Server 1 | Web Server | 10.0.0.5   | Linux (Ubuntu 18.04) |
-| Web Server 2 | Web Server | 10.0.0.6   | Linux (Ubuntu 18.04) |
-| Web Server 3 | Web Server | 10.0.0.7   | Linux (Ubuntu 18.04) |
-| Deerfender   | Elk Stack  | 10.1.0.4   | Linux (Ubuntu 18.04) |
+| Name         | Function   | Private iPv4 Address | Public iPv4 Address  | Operating System      |
+|--------------|------------|----------------------|----------------------|-----------------------|
+| Jump Box     | Gateway    | 10.0.0.4             | 52.189.229.8         | Linux (Ubuntu 18.04)  |
+| Web Server 1 | Web Server | 10.0.0.5             | N/A                  | Linux (Ubuntu 18.04)  |
+| Web Server 2 | Web Server | 10.0.0.6             | N/A                  | Linux (Ubuntu 18.04)  |
+| Web Server 3 | Web Server | 10.0.0.7             | N/A                  | Linux (Ubuntu 18.04)  |
+| Deerfender   | Elk Stack  | 10.1.0.4             | 20.37.244.250        | Linux (Ubuntu 18.04)  |
 
 <br />
 
@@ -191,12 +193,15 @@ The configuration details of each machine may be found below.
 __All public IP references have been redacted to ensure privacy of the developers__
 <br />
 
-The machines on the internal network are not exposed to the public Internet. Both the DeerFender-VM-NSG and RED Network Security Groups are configured in Azure to deny external access to the internal machines. The devices with external access is outlined below. 
+The machines on the internal network are not exposed to the public Internet. Both the DeerFender-VM-NSG and RED Network Security Groups are configured in Azure to deny external access to the internal machines. The devices with external access are outlined below. 
 
 The Jump Box can accept SSH connections from the Internet (Port 22). Access to this machine is only allowed from the following IP addresses:
 - Use your public IP from [here](https://www.whatismyip.com/)
 
 The Load balancer can accept HTTP (tcp:80) connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+- Use your public IP from [here](https://www.whatismyip.com/)
+
+The ELK Virtual Machine with Kibana can accept HTTP (tcp:5601) connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 - Use your public IP from [here](https://www.whatismyip.com/)
 
 Machines within the network can only be accessed via SSH from the Ansible container hosted on the Jump Box machine (10.0.0.4).
@@ -206,13 +211,15 @@ A summary of the access policies in place can be found in the table below.
 
 | Name         | Publicly Available     | IP Address                        |
 |--------------|------------------------|-----------------------------------|
-| Jump Box     | Yes (SSH ONLY - 22)    | 10.0.0.4                          |
+| Jump Box     | Yes (SSH ONLY - 22)    | 52.189.229.8                      |
 | Web Server 1 | No                     | 40.127.75.124 - via Load Balancer |
 | Web Server 2 | No                     | 40.127.75.124 - via Load Balancer |
 | Web Server 3 | No                     | 40.127.75.124 - via Load Balancer |
 | Deerfender   | Yes (HTTP ONLY - 5601) | 20.37.244.250                     |
 
 <br />
+
+__Please ensure your network security groups are set up to only allow SSH from your IP Address using a SSH key you set up, and all the webserver are only accessible within the virtual network with the same SSH Key which you have set up within your Ansible Container. This ensures there no unauthorized access to these machines.
 
 ### Elk Configuration
 
