@@ -1,10 +1,15 @@
-# The Deerfenders have struck again, view the ultimate repository for all things moose-related!
+
+  # DEERFENDERS - Project ELK
+
 
 <img align="left" width="300" src="Images/Moose.gif">
+<br/><br/><br/>
 
 ## Automated ELK Stack Deployment
 
-The files in this repository were used to configure the network depicted below.
+<br/>The files in this repository were used to configure the network depicted below.
+
+<br/><br/>
 
 ![Download Diagram](Images/diagram.png)
 
@@ -78,6 +83,12 @@ This document contains the following details:
 - Some extra scripts to help you out!
 
 <br /><br />
+
+### Contributers 
+
+While the Azure Virtual lab environemnt, IP addresses, files, and screenshots referred to in this document are partially specific, all members of the Deefender project team contributed to this readme file and as such some values may differ. Please raise an issue if you find any inconsistencies.
+
+<br/><br/>
 
 ### Description of the Topology
 
