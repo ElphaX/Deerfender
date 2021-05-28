@@ -13,8 +13,13 @@
 
 ![Download Diagram](Images/diagram.png)
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, additional components such as metricbeat and filebeat could be added to this playbook. For this project we used specific isolated playbooks for these modules. See the YAML project repository folder for all playbook files.
+<br/><br/>
 
+## Playbook Files
+
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, additional components such as metricbeat and filebeat could be added to this playbook. For this project we used specific isolated playbooks for these modules. See the YAML project repository folder for all playbook files, the 3 main ones have been depicted below.
+
+### ELK
   ```
 - name: Configure Elk VM with Docker
   hosts: elk
@@ -73,6 +78,69 @@ These files have been tested and used to generate a live ELK deployment on Azure
         enabled: yes
   ```
 <br/>
+### FileBeat
+```
+- name: Install and start filebeat
+  hosts: webservers
+  become: yes
+  tasks:
+  - name: download filebeat deb
+    get_url:
+      url: https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.6.1-amd64.deb
+      dest: ~/filebeat-7.6.1-amd64.deb
+  - name: install filebeat deb
+    command: dpkg -i filebeat-7.6.1-amd64.deb
+  - name: drop in filebeat.yml 
+    copy:
+      src: /etc/ansible/files/filebeat-config.yml
+      dest: /etc/filebeat/filebeat.yml
+  - name: enable and configure system module
+    command: filebeat modules enable system
+  - name: setup filebeat
+    command: filebeat setup
+  - name: start filebeat service
+    service:
+      name: filebeat
+      state: started
+  - name: enable service filebeat on boot
+    systemd:
+      name: filebeat
+      enabled: yes
+  ```
+<br/>
+### MetricBeat
+```
+- name: Install and start metricbeat
+  hosts: webservers
+  become: yes
+  tasks:
+  - name: download metricbeat deb
+    get_url:
+            url: https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.6.1-amd64.deb
+            dest: ~/metricbeat-7.6.1-amd64.deb
+  - name: install filebeat deb
+    command: dpkg -i metricbeat-7.6.1-amd64.deb
+  - name: drop in filebeat.yml
+    copy:
+      src: /etc/ansible/files/metricbeat-config.yml
+      dest: /etc/metricbeat/metricbeat.yml
+  - name: enable the docker module
+    command: metricbeat modules enable docker
+  - name: setup metricbeat
+    command: metricbeat setup
+  - name: start metricbeat service
+    service:
+            name: metricbeat
+            state: started
+  - name: enable service metricbeat on boot
+    systemd:
+      name: metricbeat
+      enabled: yes
+  ```
+<br/>
+
+ 
+
 This document contains the following details:
 - Description of the Topology
 - Access Policies
