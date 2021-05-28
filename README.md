@@ -1,6 +1,6 @@
 
   # DEERFENDERS - Project ELK
----
+
 
 <img align="left" width="300" src="Images/Moose.gif">
 <br/><br/><br/>
@@ -16,7 +16,7 @@
 <br/><br/>
 
 ## Playbook Files
----
+
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, additional components such as metricbeat and filebeat could be added to this playbook. For this project we used specific isolated playbooks for these modules. See the YAML project repository folder for all playbook files, the 3 main ones have been depicted below.
 
 ### ELK
@@ -174,6 +174,8 @@ Load balancing ensures that the application will be highly available, in additio
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the resources and system logs.
 - Filebeat monitors log files or specified locations. Once the data is collected it is then forwarded to Elasticsearch for visualisation via Kibana thereafter.
 - Metricbeat collects statistics and metric data from the respective operating systems periodically before it's sent to Elasticsearch to be viewed via Kibana.
+
+<br/><br/>
 
 ### Azure Environment Details
 ---
